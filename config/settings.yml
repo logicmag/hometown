@@ -18,7 +18,7 @@ defaults: &defaults
   show_staff_badge: true
   default_sensitive: false
   default_federation: false
-  default_privacy: 'unlisted'
+  default_privacy: 'public'
   hide_network: false
   unfollow_modal: false
   boost_modal: false
