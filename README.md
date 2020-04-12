@@ -39,8 +39,8 @@ git checkout hometown/#version-number
 # Run any steps detailed in the release notes for the most recent version: https://github.com/hometown-fork/hometown/releases
 exit
 
-systemctl restart mastodon-sidekiq
-systemctl reload mastodon-web
+sudo systemctl restart mastodon-sidekiq
+sudo systemctl reload mastodon-web
 ```
 
 
