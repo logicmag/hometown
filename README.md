@@ -16,9 +16,33 @@ Please consider [supporting Hometown by pledging to my Patreon](https://www.patr
 
 Of course this project couldn't exist without Mastodon so maybe [support the Mastodon project Patreon](https://www.patreon.com/mastodon) too.
 
-## Migrating from Mastodon to Hometown
+## Updating to the latest Hometown
 
-Please see [this article in the wiki](https://github.com/hometown-fork/hometown/wiki/Initial-migration) for directions on migration from Mastodon to Hometown.
+Update the Logic fork of Hometown:
+```
+git fetch git fetch hometown && git checkout hometown-dev
+git rebase hometown/hometown-dev
+git checkout logic-dev
+git merge hometown-dev
+# Resolve git conflicts, re-running migrations if needed
+git push origin logic-dev
+```
+
+On server:
+```
+ssh logic-camp
+su - mastodon
+
+cd /home/mastodon/live
+git fetch --tags
+git checkout hometown/#version-number
+# Run any steps detailed in the release notes for the most recent version: https://github.com/hometown-fork/hometown/releases
+exit
+
+systemctl restart mastodon-sidekiq
+systemctl reload mastodon-web
+```
+
 
 ## Local only posting
 
